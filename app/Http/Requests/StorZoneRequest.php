@@ -2,12 +2,13 @@
 
 namespace App\Http\Requests;
 
-use Illuminate\Contracts\Validation\Validator;
-use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Http\Exceptions\HttpResponseException;
-use Illuminate\Validation\Rule;
 
-class StoreUserRequest extends FormRequest
+use Illuminate\Contracts\Validation\Validator as ValidationValidator;
+use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Contracts\Validation\Validator;
+use Illuminate\Http\Exceptions\HttpResponseException;
+
+class StorZoneRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -32,18 +33,7 @@ class StoreUserRequest extends FormRequest
             "name"=>[
                 "required",
             ],
-            "email"=>[
-                "required",
-                "unique:users",
-                Rule::unique('users')->ignore($this->id),
-
-            ],
-           
-            "password"=>[
-                "required",
-                "max:8",
-               
-            ],
+            
             
         ];
     }

@@ -16,7 +16,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        // dd(1);
+        
         $users = User::all();
         return response()->json(["success" => true, "users" => $users],200);
     }
@@ -30,7 +30,6 @@ class UserController extends Controller
         $user = User::store($request);
         return response()->json(["success" => true, "users" => $user],201);
         
-        
     }
 
     /**
@@ -40,8 +39,6 @@ class UserController extends Controller
     {
         $user = User::find($id);
         return response()->json(["success" => true, "users" => $user],200);
-
-        
     }
 
     /**
@@ -59,20 +56,8 @@ class UserController extends Controller
      */
     public function destroy(string $id)
     {
-        
-    //    $iduser = User::find($id);
-      
-    //    $deleteUser = $iduser::delete();
-    //    dd($deleteUser);
-    //     return response()->json(["success" => true, "users" => $deleteUser],200);
-        $user = User::where('id', $id)->first(); // User::find($id)
-
-        if($user) {
-        
-            $user->delete();
-        return response()->json([" delete successfully " => true],200);
-
-        }
-        
+       $iduser = User::find($id);
+       $iduser->delete();
+        return response()->json(["success" => true, "users" => $iduser],200);
     }
 }
