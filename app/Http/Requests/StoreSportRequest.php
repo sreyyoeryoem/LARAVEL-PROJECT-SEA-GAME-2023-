@@ -2,13 +2,11 @@
 
 namespace App\Http\Requests;
 
-
-use Illuminate\Contracts\Validation\Validator as ValidationValidator;
-use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Contracts\Validation\Validator;
+use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\Exceptions\HttpResponseException;
 
-class StorZoneRequest extends FormRequest
+class StoreSportRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.

@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Menu extends Model
+class Venue extends Model
 {
     use HasFactory;
     protected $fillable = [
@@ -13,14 +13,14 @@ class Menu extends Model
     ];
     public static function store($request,$id=null)
     {
-        $zone = $request->only(["name"]);
+        $venue = $request->only(["name"]);
         if ($id) {
-                    $data = self::updateOrCreate(['id' => $id], $zone);
+                    $data = self::updateOrCreate(['id' => $id], $venue);
                 }
         else {
-                    $data = self::create($zone);
+                    $data = self::create($venue);
                     $id = $data->id;
                 }
-        return $zone;
+        return $venue;
     }
 }

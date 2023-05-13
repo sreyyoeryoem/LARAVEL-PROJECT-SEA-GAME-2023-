@@ -6,7 +6,7 @@ use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\Exceptions\HttpResponseException;
 
-class StoreMenueRequest extends FormRequest
+class StoreVenueRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -19,6 +19,7 @@ class StoreMenueRequest extends FormRequest
     {
         throw new HttpResponseException(response()->json(['success' => false, 'message' => $validator->errors()], 412));
     }
+
     /**
      * Get the validation rules that apply to the request.
      *
@@ -29,7 +30,10 @@ class StoreMenueRequest extends FormRequest
         return [
             "name"=>[
                 "required",
+                "unique:zones"
             ],
+            
+            
         ];
     }
 }

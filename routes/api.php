@@ -1,6 +1,9 @@
 <?php
 
-use App\Http\Controllers\MenuController;
+
+use App\Http\Controllers\SportController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\VenueController;
 use App\Http\Controllers\ZoneController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -22,11 +25,11 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 
 // ===================================User=====================================
-Route::get("/users",[ZoneController::class,"index"]);
-Route::post("/users",[ZoneController::class,"store"]);
-Route::get("/users/{id}",[ZoneController::class,"show"]);
-Route::put("/users/{id}",[ZoneController::class,"update"]);
-Route::delete("/users/{id}",[ZoneController::class,"destroy"]);
+Route::get("/users",[UserController::class,"index"]);
+Route::post("/users",[UserController::class,"store"]);
+Route::get("/users/{id}",[UserController::class,"show"]);
+Route::put("/users/{id}",[UserController::class,"update"]);
+Route::delete("/users/{id}",[UserController::class,"destroy"]);
 
 
 // ===================================Zone=====================================
@@ -36,9 +39,23 @@ Route::get("/zone/{id}",[ZoneController::class,"show"]);
 Route::put("/zone/{id}",[ZoneController::class,"update"]);
 Route::delete("/zone/{id}",[ZoneController::class,"destroy"]);
 
-// ===================================Menu=====================================
-Route::get("/menu",[MenuController::class,"index"]);
-Route::post("/menu",[MenuController::class,"store"]);
-Route::get("/menu/{id}",[MenuController::class,"show"]);
-Route::put("/menu/{id}",[MenuController::class,"update"]);
-Route::delete("/menu/{id}",[MenuController::class,"destroy"]);
+// ===================================Venue=====================================
+Route::get("/venue",[VenueController::class,"index"]);
+Route::post("/venue",[VenueController::class,"store"]);
+Route::get("/venue/{id}",[VenueController::class,"show"]);
+Route::put("/venue/{id}",[VenueController::class,"update"]);
+Route::delete("/venue/{id}",[VenueController::class,"destroy"]);
+
+// ===================================Sprot=====================================
+Route::get("/sport",[SportController::class,"index"]);
+Route::post("/sport",[SportController::class,"store"]);
+Route::get("/sport/{id}",[SportController::class,"show"]);
+Route::put("/sport/{id}",[SportController::class,"update"]);
+Route::delete("/sport/{id}",[SportController::class,"destroy"]);
+
+// ===================================Team=====================================
+// Route::get("/team",[::class,"index"]);
+// Route::post("/team",[SportController::class,"store"]);
+// Route::get("/team/{id}",[SportController::class,"show"]);
+// Route::put("/team/{id}",[SportController::class,"update"]);
+// Route::delete("/team/{id}",[SportController::class,"destroy"]);

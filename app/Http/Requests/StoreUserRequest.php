@@ -36,7 +36,6 @@ class StoreUserRequest extends FormRequest
                 "required",
                 "unique:users",
                 Rule::unique('users')->ignore($this->id),
-
             ],
            
             "password"=>[
