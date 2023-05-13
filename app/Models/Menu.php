@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Zone extends Model
+class Menu extends Model
 {
     use HasFactory;
     protected $fillable = [
@@ -23,7 +23,4 @@ class Zone extends Model
                 }
         return $zone;
     }
-
-    
 }
-
