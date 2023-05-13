@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class Sport extends Model
 {
@@ -11,6 +12,9 @@ class Sport extends Model
     protected $fillable = [
         'name',
     ];
+
+   
+
     public static function store($request,$id=null)
     {
         $sport = $request->only(["name"]);
@@ -22,5 +26,10 @@ class Sport extends Model
                     $id = $data->id;
                 }
         return $sport;
+    }
+    // ======================Relations =============================
+    public function booking():HasOne
+    {
+        return $this->hasOne(Booking::class);
     }
 }

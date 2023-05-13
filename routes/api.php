@@ -1,7 +1,8 @@
 <?php
 
-
+use App\Http\Controllers\BookingController;
 use App\Http\Controllers\SportController;
+use App\Http\Controllers\Teamcontroller;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\VenueController;
 use App\Http\Controllers\ZoneController;
@@ -54,8 +55,15 @@ Route::put("/sport/{id}",[SportController::class,"update"]);
 Route::delete("/sport/{id}",[SportController::class,"destroy"]);
 
 // ===================================Team=====================================
-// Route::get("/team",[::class,"index"]);
-// Route::post("/team",[SportController::class,"store"]);
+Route::get("/team",[Teamcontroller::class,"index"]);
+Route::post("/team",[Teamcontroller::class,"store"]);
 // Route::get("/team/{id}",[SportController::class,"show"]);
-// Route::put("/team/{id}",[SportController::class,"update"]);
+Route::put("/team/{id}",[SportController::class,"update"]);
 // Route::delete("/team/{id}",[SportController::class,"destroy"]);
+
+// ===================================Booking=====================================
+Route::get("/booking",[BookingController::class,"index"]);
+Route::post("/booking",[BookingController::class,"store"]);
+Route::get("/booking/{id}",[BookingController::class,"show"]);
+Route::put("/booking/{id}",[BookingController::class,"update"]);
+// Route::delete("/team/{id}",[BookingController::class,"destroy"]);

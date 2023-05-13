@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class Zone extends Model
 {
@@ -22,6 +23,11 @@ class Zone extends Model
                     $id = $data->id;
                 }
         return $zone;
+    }
+    // ===================================Relationship=============================
+    public function booking():HasOne
+    {
+        return $this->hasOne(Booking::class);
     }
 
     

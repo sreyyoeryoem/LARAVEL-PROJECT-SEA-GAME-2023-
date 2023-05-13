@@ -2,19 +2,22 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\StoreTeamRequest;
-use App\Models\Team;
+use App\Http\Requests\StoreBookingRequest;
+use App\Http\Resources\BokingResource;
+use App\Http\Resources\showBokingResource;
+use App\Models\Booking;
 use Illuminate\Http\Request;
 
-class Teamcontroller extends Controller
+class BookingController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $team = Team::all();
-        return response()->json(["success" => true, "team" => $team],200);
+        $booking = Booking::all();
+        $booking = BokingResource::collection($booking);
+        return response()->json(["success" => true, "booking" => $booking],200);
 
 
     }
@@ -22,10 +25,10 @@ class Teamcontroller extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreTeamRequest $request)
+    public function store(StoreBookingRequest $request)
     {
-        
-        $team = Team::store($request);
+        // dd(1);
+        $team = Booking::store($request);
         return response()->json(["success" => true, "team" => $team],201);
     }
 
@@ -34,7 +37,10 @@ class Teamcontroller extends Controller
      */
     public function show(string $id)
     {
-        //
+
+        $bookingId = Booking::find($id);
+        $booking = new showBokingResource($bookingId);
+        return response()->json(["success" => true, "get booking by id" => $booking],200);
     }
 
     /**
@@ -42,10 +48,9 @@ class Teamcontroller extends Controller
      */
     public function update(Request $request, string $id)
     {
-        $team_id = Team::find($id);
-        $updaTeam = $team_id::store($request,$id);
-        return response()->json(["Update successfully" => true, "team" => $updaTeam],200);
+        //
     }
+
     /**
      * Remove the specified resource from storage.
      */
