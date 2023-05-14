@@ -32,4 +32,8 @@ class Sport extends Model
     {
         return $this->hasOne(Booking::class);
     }
+    public function even():HasOne
+    {
+        return $this->hasOne(even::class);
+    }
 }

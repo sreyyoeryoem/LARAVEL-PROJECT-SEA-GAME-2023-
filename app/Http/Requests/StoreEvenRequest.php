@@ -6,7 +6,7 @@ use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\Exceptions\HttpResponseException;
 
-class StoreVenueRequest extends FormRequest
+class StoreEvenRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -28,12 +28,21 @@ class StoreVenueRequest extends FormRequest
     public function rules(): array
     {
         return [
-            "name"=>[
+           
+            "match_date"=>[
                 "required",
-                "unique:venues"
+            ],
+            "Description"=>[
+                "required",
             ],
             
+            "sport_id"=>[
+                "required",
+            ],
+            "venue_id"=>[
+                "required",
+            ]
             
-        ];
+            ];
     }
 }

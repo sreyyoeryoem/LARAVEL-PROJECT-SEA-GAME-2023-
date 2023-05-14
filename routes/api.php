@@ -1,8 +1,10 @@
 <?php
 
 use App\Http\Controllers\BookingController;
+use App\Http\Controllers\EvenController;
 use App\Http\Controllers\SportController;
 use App\Http\Controllers\Teamcontroller;
+use App\Http\Controllers\TicketControler;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\VenueController;
 use App\Http\Controllers\ZoneController;
@@ -67,3 +69,17 @@ Route::post("/booking",[BookingController::class,"store"]);
 Route::get("/booking/{id}",[BookingController::class,"show"]);
 Route::put("/booking/{id}",[BookingController::class,"update"]);
 // Route::delete("/team/{id}",[BookingController::class,"destroy"]);
+
+// ===================================Ticket=====================================
+Route::get("/ticket",[TicketControler::class,"index"]);
+Route::post("/ticket",[TicketControler::class,"store"]);
+Route::get("/ticket/{id}",[TicketControler::class,"show"]);
+Route::put("/ticket/{id}",[TicketControler::class,"update"]);
+// Route::delete("/team/{id}",[BookingController::class,"destroy"]);
+
+// ===================================Event=====================================
+Route::get("/event",[EvenController::class,"index"]);
+Route::post("/event",[EvenController::class,"store"]);
+Route::get("/event/{id}",[EvenController::class,"show"]);
+Route::put("/event/{id}",[EvenController::class,"update"]);
+Route::delete("/event/{id}",[EvenController::class,"destroy"]);

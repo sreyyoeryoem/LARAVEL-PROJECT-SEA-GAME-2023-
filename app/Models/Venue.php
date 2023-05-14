@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class Venue extends Model
 {
@@ -22,5 +23,10 @@ class Venue extends Model
                     $id = $data->id;
                 }
         return $venue;
+    }
+    // ================================Relationship================================
+    public function even():HasOne
+    {
+        return $this->hasOne(even::class);
     }
 }

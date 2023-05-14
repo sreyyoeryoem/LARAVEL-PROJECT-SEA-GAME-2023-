@@ -6,7 +6,7 @@ use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\Exceptions\HttpResponseException;
 
-class StoreVenueRequest extends FormRequest
+class StoreTicketRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -28,10 +28,14 @@ class StoreVenueRequest extends FormRequest
     public function rules(): array
     {
         return [
-            "name"=>[
+           
+            "booking_id"=>[
                 "required",
-                "unique:venues"
             ],
+            "event_id"=>[
+                "required",
+            ],
+            
             
             
         ];

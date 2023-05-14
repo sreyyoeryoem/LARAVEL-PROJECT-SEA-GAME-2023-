@@ -27,7 +27,7 @@ class BookingController extends Controller
      */
     public function store(StoreBookingRequest $request)
     {
-        // dd(1);
+    
         $team = Booking::store($request);
         return response()->json(["success" => true, "team" => $team],201);
     }

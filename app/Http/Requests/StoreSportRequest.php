@@ -30,7 +30,7 @@ class StoreSportRequest extends FormRequest
         return [
             "name"=>[
                 "required",
-                "unique:zones"
+                "unique:sports"
             ],
             
             
