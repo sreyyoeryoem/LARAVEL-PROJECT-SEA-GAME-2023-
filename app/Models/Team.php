@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Team extends Model
 {
@@ -21,21 +22,20 @@ class Team extends Model
     }
     public static function store($request,$id=null){
 
-        $team = $request->only(["name", "country","team_members","user_id"]);
-       
-        if ($id) {
-            
-            
-                    $data = self::updateOrCreate(['id' => $id], $team);
-                }
-        else {
-         
-                    $data = self::create($team);
-                    $id = $data->id; 
-                }
+        $team = $request->only(["name",
+         "country",
+         "team_members",
+         "user_id"
+        ]);
+        $team = self::updateOrCreate(['id' => $id], $team);
         return $team;
     }
     
+    // ========================================================Relationship========
+    public function event()
+    {
+    return $this->belongsToMany(Event::class,"event_teams")->withTimestamps();
+    }
 
 }
 

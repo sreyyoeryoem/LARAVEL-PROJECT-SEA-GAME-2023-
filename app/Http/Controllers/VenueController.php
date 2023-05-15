@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreVenueRequest;
+use App\Http\Resources\VenueResource;
 use App\Models\Venue;
 use Illuminate\Http\Request;
 
@@ -14,6 +15,7 @@ class VenueController extends Controller
     public function index()
     {
         $venues = Venue::all();
+        $venues = VenueResource::collection($venues);
         return response()->json(["success" => true, "venues" => $venues],200);
 
     }

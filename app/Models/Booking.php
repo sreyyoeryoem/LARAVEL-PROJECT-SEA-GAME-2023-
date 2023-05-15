@@ -18,18 +18,14 @@ class Booking extends Model
    
     public static function store($request,$id=null){
 
-        $booking = $request->only(["match_date", "user_id","sport_id","zone_id"]);
-       
-        if ($id) {
-            
-            
-                    $data = self::updateOrCreate(['id' => $id], $booking);
-                }
-        else {
-         
-                    $data = self::create($booking);
-                    $id = $data->id; 
-                }
+        $booking = $request->only([
+        "match_date",
+         "user_id",
+         "sport_id",
+         "zone_id"
+        ]);
+        
+        $booking = self::updateOrCreate(['id' => $id], $booking);
         return $booking;
     }
 

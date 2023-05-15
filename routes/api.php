@@ -2,9 +2,12 @@
 
 use App\Http\Controllers\BookingController;
 use App\Http\Controllers\EvenController;
+use App\Http\Controllers\Event_TeamController;
 use App\Http\Controllers\SportController;
 use App\Http\Controllers\Teamcontroller;
 use App\Http\Controllers\TicketControler;
+use App\Http\Controllers\TicketController;
+use App\Http\Controllers\TickitController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\VenueController;
 use App\Http\Controllers\ZoneController;
@@ -83,3 +86,14 @@ Route::post("/event",[EvenController::class,"store"]);
 Route::get("/event/{id}",[EvenController::class,"show"]);
 Route::put("/event/{id}",[EvenController::class,"update"]);
 Route::delete("/event/{id}",[EvenController::class,"destroy"]);
+
+// ===================================Ticket=====================================
+Route::get("/ticket",[TicketController::class,"index"]);
+Route::post("/ticket",[TicketController::class,"store"]);
+Route::get("/ticket/{id}",[TicketController::class,"show"]);
+
+
+// ===================================Event_Team=====================================
+Route::get("/EventTeam",[Event_TeamController::class,"index"]);
+Route::post("/EventTeam",[Event_TeamController::class,"store"]);
+Route::get("/EventTeam/{id}",[Event_TeamController::class,"show"]);

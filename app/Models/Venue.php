@@ -15,14 +15,7 @@ class Venue extends Model
     public static function store($request,$id=null)
     {
         $venue = $request->only(["name"]);
-        if ($id) {
-                    $data = self::updateOrCreate(['id' => $id], $venue);
-                }
-        else {
-                    $data = self::create($venue);
-                    $id = $data->id;
-                }
-        return $venue;
+        $venue = self::updateOrCreate(['id' => $id], $venue);
     }
     // ================================Relationship================================
     public function even():HasOne

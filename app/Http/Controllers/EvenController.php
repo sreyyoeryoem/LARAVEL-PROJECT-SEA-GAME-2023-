@@ -3,12 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreEvenRequest;
+use App\Http\Requests\StoreEventRequest;
 use App\Http\Resources\EventResource;
 use App\Http\Resources\ShowEventResource;
-use App\Models\even;
+use App\Models\Event;
 use App\Models\Sport;
 use Illuminate\Http\Request;
-use PHPUnit\Event\Event;
+
 
 class EvenController extends Controller
 {
@@ -17,12 +18,11 @@ class EvenController extends Controller
      */
     public function index()
     {
-      
-        $event = even::all();
+        $event = Event::all();
+        $vent_name = request("name");
+        $event = Event::where("name","like","%".$vent_name."%")->get();
         $event = EventResource::collection($event);
         return response()->json(["success" => true, "event" => $event],200);
-
-
     }
 
     /**
@@ -30,10 +30,10 @@ class EvenController extends Controller
      */
     public function store(StoreEvenRequest $request)
     {
-       
-      
-        $even = even::store($request);
-        return response()->json(["success" => true, "event" => $even],201);
+     
+        $event = Event::store($request);
+        return response()->json(["success" => true, "Event" => $event],201);
+    
     }
 
     /**
@@ -41,8 +41,8 @@ class EvenController extends Controller
      */
     public function show(string $id)
     {
-        $event = even::find($id);
-        $event = new ShowEventResource($event);
+        $event_id = Event::find($id);
+        $event = new ShowEventResource($event_id);
         return response()->json(["success" => true, "event" => $event],200);
 
     }
@@ -52,7 +52,7 @@ class EvenController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        $event_id = even::find($id);
+        $event_id = Event::find($id);
         $updateEvent = $event_id::store($request,$id);
         return response()->json(["Update successfully" => true, "Event" => $updateEvent],200);
     }
@@ -62,7 +62,7 @@ class EvenController extends Controller
      */
     public function destroy(string $id)
     {
-        $event_id = even::find($id);
+        $event_id = Event::find($id);
         $event_id->delete();
         return response()->json(["success" => true, "event" => $event_id],200);
     }

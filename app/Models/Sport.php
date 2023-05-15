@@ -18,13 +18,7 @@ class Sport extends Model
     public static function store($request,$id=null)
     {
         $sport = $request->only(["name"]);
-        if ($id) {
-                    $data = self::updateOrCreate(['id' => $id], $sport);
-                }
-        else {
-                    $data = self::create($sport);
-                    $id = $data->id;
-                }
+        $sport = self::updateOrCreate(['id' => $id], $sport);
         return $sport;
     }
     // ======================Relations =============================

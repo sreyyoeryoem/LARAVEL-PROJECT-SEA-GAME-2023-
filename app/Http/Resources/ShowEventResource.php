@@ -14,13 +14,18 @@ class ShowEventResource extends JsonResource
      */
     public function toArray(Request $request): array
     {
-      
+    //   dd($this->tickes);
+
         return [
             "id"=>$this->id,
+            "name"=>$this->name,
             "match_date"=>$this->match_date,
-            "description"=>$this->Description,
-            "Sport"=>$this->sport,
-            "venue "=>$this->venue
+            "start_time"=>$this->start_time,
+            "end_time"=>$this->end_time,
+            "description"=>$this->description,
+            "venue "=>$this->venue,
+            "ticket" =>$this->tickets,
+            'teams' =>TeamResource::collection($this->teams)
         ];
     }
 }
