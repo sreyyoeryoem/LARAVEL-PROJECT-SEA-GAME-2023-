@@ -23,8 +23,8 @@ class Event_TeamController extends Controller
      */
     public function store(Request $request)
     {
-        $sport = Event_Team::store($request);
-        return response()->json(["success" => true, "sprot" => $sport],201);
+        // $sport = Event_Team::store($request);
+        // return response()->json(["success" => true, "sprot" => $sport],201);
     }
 
     /**

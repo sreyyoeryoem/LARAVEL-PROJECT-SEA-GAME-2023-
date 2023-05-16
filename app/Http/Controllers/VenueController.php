@@ -26,7 +26,7 @@ class VenueController extends Controller
     public function store(StoreVenueRequest $request)
     {
         $venues = Venue::store($request);
-        return response()->json(["success" => true, "venues" => $venues],201);
+        return response()->json(["Create venue successfully" => true, "venues" => $venues],201);
     }
 
     /**

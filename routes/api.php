@@ -62,9 +62,7 @@ Route::delete("/sport/{id}",[SportController::class,"destroy"]);
 // ===================================Team=====================================
 Route::get("/team",[Teamcontroller::class,"index"]);
 Route::post("/team",[Teamcontroller::class,"store"]);
-// Route::get("/team/{id}",[SportController::class,"show"]);
 Route::put("/team/{id}",[SportController::class,"update"]);
-// Route::delete("/team/{id}",[SportController::class,"destroy"]);
 
 // ===================================Booking=====================================
 Route::get("/booking",[BookingController::class,"index"]);
@@ -95,5 +93,3 @@ Route::get("/ticket/{id}",[TicketController::class,"show"]);
 
 // ===================================Event_Team=====================================
 Route::get("/EventTeam",[Event_TeamController::class,"index"]);
-Route::post("/EventTeam",[Event_TeamController::class,"store"]);
-Route::get("/EventTeam/{id}",[Event_TeamController::class,"show"]);
